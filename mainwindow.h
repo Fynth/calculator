@@ -16,7 +16,12 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_databaseButton_clicked();
+    void on_calculatorButton_clicked();
+
+    void on_creditCountButton_clicked();
+
+    void on_hypothecCountButton_clicked();
 
 private:
     Ui::MainWindow *ui;

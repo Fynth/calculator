@@ -13,29 +13,38 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">font: 25 10pt &quot;Ubuntu&quot;;
+background-color: rgb(136, 138, 133);
+</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
+    <item row="1" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
        <number>0</number>
       </property>
       <widget class="QWidget" name="calculator">
        <layout class="QGridLayout" name="gridLayout_7">
-        <item row="0" column="0">
+        <item row="1" column="0">
          <widget class="QTabWidget" name="tabWidget">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(238, 238, 236);
+selection-background-color: rgb(239, 41, 41)</string>
+          </property>
           <property name="currentIndex">
            <number>2</number>
           </property>
-          <widget class="QWidget" name="tab_3">
+          <widget class="QWidget" name="credittab">
            <attribute name="title">
             <string>Кредит</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_3">
-            <item row="0" column="0">
+            <item row="0" column="1">
              <widget class="QWidget" name="credit" native="true">
               <layout class="QGridLayout" name="gridLayout_2">
-               <item row="2" column="0" colspan="2">
+               <item row="3" column="0" colspan="4">
                 <widget class="QTableWidget" name="creditTable">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -43,6 +52,9 @@
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
                  <column>
                   <property name="text">
                    <string>Дата</string>
@@ -60,7 +72,7 @@
                  </column>
                  <column>
                   <property name="text">
-                   <string>Тело</string>
+                   <string>Тело кредита</string>
                   </property>
                  </column>
                  <column>
@@ -70,210 +82,236 @@
                  </column>
                  <column>
                   <property name="text">
-                   <string>Общая плата</string>
-                  </property>
-                 </column>
-                 <column>
-                  <property name="text">
                    <string>Остаток</string>
                   </property>
                  </column>
                 </widget>
-               </item>
-               <item row="0" column="1">
-                <layout class="QFormLayout" name="creditHorizontalLayout_3">
-                 <property name="verticalSpacing">
-                  <number>12</number>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_3">
-                   <property name="text">
-                    <string>Порядок погашения:</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="1">
-                  <widget class="QComboBox" name="comboBox_2">
-                   <item>
-                    <property name="text">
-                     <string>Аннуитетный</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Дифференцированный</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                 <item row="1" column="0">
-                  <widget class="QLabel" name="label_8">
-                   <property name="text">
-                    <string>Комиссия(в месяц):</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="1">
-                  <widget class="QLineEdit" name="lineEdit_6"/>
-                 </item>
-                 <item row="2" column="0">
-                  <widget class="QLabel" name="label_7">
-                   <property name="text">
-                    <string>Разовая комиссия:</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="1">
-                  <widget class="QLineEdit" name="lineEdit_7"/>
-                 </item>
-                </layout>
                </item>
                <item row="0" column="0">
                 <layout class="QFormLayout" name="creditHorizontalLayout_2">
                  <property name="verticalSpacing">
                   <number>12</number>
                  </property>
-                 <item row="0" column="1">
-                  <widget class="QLineEdit" name="lineEdit"/>
-                 </item>
-                 <item row="1" column="0">
-                  <widget class="QLabel" name="label_6">
-                   <property name="text">
-                    <string>Ставка (%):</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="0">
-                  <widget class="QLabel" name="label_5">
-                   <property name="text">
-                    <string>Срок (месяцев):</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="3" column="0">
-                  <widget class="QLabel" name="label_4">
-                   <property name="text">
-                    <string>Дата выдачи:</string>
-                   </property>
-                  </widget>
-                 </item>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_2">
+                  <widget class="QLabel" name="creditSumlabel">
                    <property name="text">
                     <string>Сумма:</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="3" column="1">
-                  <widget class="QDateEdit" name="dateEdit"/>
+                 <item row="0" column="1">
+                  <widget class="QLineEdit" name="creditSum"/>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="creditPercentlabel">
+                   <property name="text">
+                    <string>Годовая ставка (%):</string>
+                   </property>
+                  </widget>
                  </item>
                  <item row="1" column="1">
-                  <widget class="QLineEdit" name="lineEdit_2"/>
+                  <widget class="QLineEdit" name="creditPercent"/>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QLabel" name="creditTimelabel">
+                   <property name="text">
+                    <string>Срок (месяцев):</string>
+                   </property>
+                  </widget>
                  </item>
                  <item row="2" column="1">
-                  <widget class="QSpinBox" name="spinBox"/>
+                  <widget class="QDateEdit" name="creditDate"/>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="creditDatelabel">
+                   <property name="text">
+                    <string>Дата выдачи:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="1">
+                  <widget class="QSpinBox" name="creditTime"/>
                  </item>
                 </layout>
                </item>
-               <item row="1" column="0" colspan="2">
-                <spacer name="verticalSpacer">
+               <item row="1" column="3">
+                <spacer name="horizontalSpacer_3">
                  <property name="orientation">
-                  <enum>Qt::Vertical</enum>
+                  <enum>Qt::Horizontal</enum>
                  </property>
                  <property name="sizeType">
-                  <enum>QSizePolicy::Fixed</enum>
+                  <enum>QSizePolicy::Minimum</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>60</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="1" column="0" colspan="2">
+                <spacer name="horizontalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Minimum</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
                    <width>20</width>
-                   <height>30</height>
+                   <height>40</height>
                   </size>
                  </property>
                 </spacer>
+               </item>
+               <item row="1" column="2">
+                <widget class="QPushButton" name="creditCountButton">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: rgb(138, 226, 52);</string>
+                 </property>
+                 <property name="text">
+                  <string>Рассчитать</string>
+                 </property>
+                </widget>
                </item>
               </layout>
              </widget>
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="tab_4">
+          <widget class="QWidget" name="hypothectab">
            <attribute name="title">
             <string>Ипотека</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_5">
             <item row="0" column="0">
-             <widget class="QWidget" name="credit_2" native="true">
+             <widget class="QWidget" name="hypothec" native="true">
               <layout class="QGridLayout" name="gridLayout_4">
-               <item row="1" column="0" colspan="2">
-                <spacer name="verticalSpacer_2">
-                 <property name="orientation">
-                  <enum>Qt::Vertical</enum>
-                 </property>
-                 <property name="sizeType">
-                  <enum>QSizePolicy::Fixed</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>20</width>
-                   <height>30</height>
-                  </size>
-                 </property>
-                </spacer>
+               <item row="1" column="0" rowspan="2" colspan="3">
+                <layout class="QGridLayout" name="gridLayout_10">
+                 <item row="0" column="1">
+                  <widget class="QPushButton" name="hypothecCountButton">
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(138, 226, 52);</string>
+                   </property>
+                   <property name="text">
+                    <string>Рассчитать</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <spacer name="horizontalSpacer_2">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item row="0" column="2">
+                  <spacer name="horizontalSpacer_4">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Minimum</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>60</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
                </item>
-               <item row="0" column="0">
-                <layout class="QFormLayout" name="creditHorizontalLayout_4">
+               <item row="0" column="1" colspan="2">
+                <layout class="QFormLayout" name="hypothecHorizontalLayout_8">
                  <property name="verticalSpacing">
                   <number>12</number>
                  </property>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="hypothecDatelabel">
+                   <property name="text">
+                    <string>Дата выдачи:</string>
+                   </property>
+                  </widget>
+                 </item>
                  <item row="0" column="1">
-                  <widget class="QLineEdit" name="lineEdit_5"/>
+                  <widget class="QDateEdit" name="hypothecDate"/>
+                 </item>
+                </layout>
+               </item>
+               <item row="0" column="0">
+                <layout class="QFormLayout" name="hypothecHorizontalLayout_4">
+                 <property name="verticalSpacing">
+                  <number>12</number>
+                 </property>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="hypothecSumlabel">
+                   <property name="text">
+                    <string>Сумма:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QLineEdit" name="hypothecSum"/>
                  </item>
                  <item row="1" column="0">
-                  <widget class="QLabel" name="label_9">
+                  <widget class="QLabel" name="hypothecFirstPaymentlabel">
                    <property name="text">
                     <string>Первоначальный взнос:</string>
                    </property>
                   </widget>
                  </item>
                  <item row="1" column="1">
-                  <widget class="QLineEdit" name="lineEdit_8"/>
+                  <widget class="QLineEdit" name="hypothecFirstPayment"/>
                  </item>
                  <item row="2" column="0">
-                  <widget class="QLabel" name="label_10">
+                  <widget class="QLabel" name="hypothecTimelabel">
                    <property name="text">
                     <string>Срок (лет):</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="3" column="0">
-                  <widget class="QLabel" name="label_11">
-                   <property name="text">
-                    <string>Ставка (%):</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_12">
-                   <property name="text">
-                    <string>Сумма:</string>
-                   </property>
-                  </widget>
-                 </item>
                  <item row="2" column="1">
-                  <widget class="QSpinBox" name="spinBox_2"/>
+                  <widget class="QSpinBox" name="hypothecTime"/>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QLabel" name="hypothecPercentlabel">
+                   <property name="text">
+                    <string>Годовая ставка (%):</string>
+                   </property>
+                  </widget>
                  </item>
                  <item row="3" column="1">
-                  <widget class="QLineEdit" name="lineEdit_3"/>
+                  <widget class="QLineEdit" name="hypothecPercent"/>
                  </item>
                 </layout>
                </item>
-               <item row="2" column="0" colspan="2">
-                <widget class="QTableWidget" name="creditTable_2">
+               <item row="3" column="0" colspan="3">
+                <widget class="QTableWidget" name="hypothecTable">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true"/>
                  </property>
                  <column>
                   <property name="text">
@@ -292,7 +330,7 @@
                  </column>
                  <column>
                   <property name="text">
-                   <string>Тело</string>
+                   <string>Тело ипотеки</string>
                   </property>
                  </column>
                  <column>
@@ -302,35 +340,17 @@
                  </column>
                  <column>
                   <property name="text">
-                   <string>Общая плата</string>
-                  </property>
-                 </column>
-                 <column>
-                  <property name="text">
                    <string>Остаток</string>
                   </property>
                  </column>
                 </widget>
-               </item>
-               <item row="0" column="1">
-                <spacer name="horizontalSpacer_2">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
                </item>
               </layout>
              </widget>
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="tab">
+          <widget class="QWidget" name="deposittab">
            <attribute name="title">
             <string>Вклад</string>
            </attribute>
@@ -338,6 +358,49 @@
             <item row="0" column="0">
              <widget class="QWidget" name="credit_3" native="true">
               <layout class="QGridLayout" name="gridLayout_6">
+               <item row="1" column="0" colspan="3">
+                <widget class="QTableWidget" name="depositTable">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <column>
+                  <property name="text">
+                   <string>Дата</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Плата в месяц</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Проценты</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Тело кредита</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Переплата</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Остаток</string>
+                  </property>
+                 </column>
+                </widget>
+               </item>
                <item row="0" column="1">
                 <layout class="QFormLayout" name="creditHorizontalLayout_6">
                  <property name="verticalSpacing">
@@ -364,83 +427,27 @@
                   <widget class="QComboBox" name="comboBox">
                    <item>
                     <property name="text">
-                     <string>Фиксированная</string>
+                     <string>Простые проценты</string>
                     </property>
                    </item>
                    <item>
                     <property name="text">
-                     <string>Изменяемая от суммы</string>
+                     <string>Ежедневная капитализация</string>
                     </property>
                    </item>
                    <item>
                     <property name="text">
-                     <string>Изменяемая от срока</string>
+                     <string>Ежемесячная капитализация</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Ежеквартальная капиталция</string>
                     </property>
                    </item>
                   </widget>
                  </item>
                 </layout>
-               </item>
-               <item row="1" column="0" colspan="2">
-                <spacer name="verticalSpacer_3">
-                 <property name="orientation">
-                  <enum>Qt::Vertical</enum>
-                 </property>
-                 <property name="sizeType">
-                  <enum>QSizePolicy::Fixed</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>20</width>
-                   <height>30</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item row="2" column="0" colspan="2">
-                <widget class="QTableWidget" name="creditTable_3">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <column>
-                  <property name="text">
-                   <string>Дата</string>
-                  </property>
-                 </column>
-                 <column>
-                  <property name="text">
-                   <string>Плата в месяц</string>
-                  </property>
-                 </column>
-                 <column>
-                  <property name="text">
-                   <string>Проценты</string>
-                  </property>
-                 </column>
-                 <column>
-                  <property name="text">
-                   <string>Тело</string>
-                  </property>
-                 </column>
-                 <column>
-                  <property name="text">
-                   <string>Переплата</string>
-                  </property>
-                 </column>
-                 <column>
-                  <property name="text">
-                   <string>Общая плата</string>
-                  </property>
-                 </column>
-                 <column>
-                  <property name="text">
-                   <string>Остаток</string>
-                  </property>
-                 </column>
-                </widget>
                </item>
                <item row="0" column="0">
                 <layout class="QFormLayout" name="creditHorizontalLayout_7">
@@ -448,167 +455,241 @@
                   <number>12</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QLabel" name="label_22">
+                  <widget class="QLabel" name="depositSumlabel">
                    <property name="text">
                     <string>Сумма:</string>
                    </property>
                   </widget>
                  </item>
                  <item row="0" column="1">
-                  <widget class="QLineEdit" name="lineEdit_15"/>
+                  <widget class="QLineEdit" name="depositSum"/>
                  </item>
                  <item row="1" column="0">
-                  <widget class="QLabel" name="label_19">
+                  <widget class="QLabel" name="depositPercentlabel">
                    <property name="text">
                     <string>Ставка (%):</string>
                    </property>
                   </widget>
                  </item>
                  <item row="1" column="1">
-                  <widget class="QLineEdit" name="lineEdit_16"/>
+                  <widget class="QLineEdit" name="depositPercent"/>
                  </item>
                  <item row="2" column="0">
-                  <widget class="QLabel" name="label_20">
+                  <widget class="QLabel" name="depositFrequencylabel">
                    <property name="text">
                     <string>Периодичность выплат:</string>
                    </property>
                   </widget>
                  </item>
                  <item row="2" column="1">
-                  <widget class="QLineEdit" name="lineEdit_17"/>
+                  <widget class="QLineEdit" name="depositFrequency"/>
                  </item>
                  <item row="3" column="0">
-                  <widget class="QLabel" name="label_21">
+                  <widget class="QLabel" name="depositDatelabel">
                    <property name="text">
                     <string>Срок открытия:</string>
                    </property>
                   </widget>
                  </item>
                  <item row="3" column="1">
-                  <widget class="QLineEdit" name="lineEdit_18"/>
+                  <widget class="QLineEdit" name="depositDate"/>
                  </item>
                 </layout>
                </item>
               </layout>
              </widget>
             </item>
-            <item row="1" column="0">
-             <layout class="QGridLayout" name="select">
-              <property name="sizeConstraint">
-               <enum>QLayout::SetDefaultConstraint</enum>
-              </property>
-              <property name="topMargin">
-               <number>12</number>
-              </property>
-              <property name="verticalSpacing">
-               <number>6</number>
-              </property>
-              <item row="0" column="3">
-               <spacer name="horizontalSpacer_3">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeType">
-                 <enum>QSizePolicy::Minimum</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>30</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item row="0" column="1" colspan="2">
-               <widget class="QPushButton" name="pushButton">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>Рассчитать</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0">
-               <spacer name="horizontalSpacer">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeType">
-                 <enum>QSizePolicy::Expanding</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>550</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-             </layout>
-            </item>
            </layout>
           </widget>
          </widget>
+        </item>
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="select_2">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>6</number>
+          </property>
+          <item row="0" column="0">
+           <spacer name="horizontalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Expanding</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>550</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="1" colspan="2">
+           <widget class="QPushButton" name="databaseButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(114, 159, 207);</string>
+            </property>
+            <property name="text">
+             <string>БД</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
       <widget class="QWidget" name="database">
        <layout class="QGridLayout" name="gridLayout_9">
-        <item row="3" column="0" colspan="3">
-         <widget class="QListWidget" name="listWidget">
-          <item>
-           <property name="text">
-            <string>Иванов Иван Иванович</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Петров Петр Петрович</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Путин Владимир Владимирович</string>
-           </property>
-          </item>
+        <item row="0" column="2">
+         <widget class="QPushButton" name="calculatorButton">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(239, 41, 41);</string>
+          </property>
+          <property name="text">
+           <string>Калькулятор</string>
+          </property>
          </widget>
         </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>Фамилия:</string>
+        <item row="1" column="1" colspan="2">
+         <widget class="QGroupBox" name="groupBox">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(238, 238, 236);
+selection-background-color: rgb(114, 159, 207)</string>
           </property>
+          <property name="title">
+           <string/>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_18">
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_15">
+             <property name="text">
+              <string>Идентификатор:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Фамилия:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_14">
+             <property name="text">
+              <string>Отчество (при наличии):</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_13">
+             <property name="text">
+              <string>Имя:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <spacer name="verticalSpacer_4">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Minimum</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>10</width>
+               <height>30</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="5" column="0" colspan="5">
+            <widget class="QListWidget" name="databaseList">
+             <item>
+              <property name="text">
+               <string>Новый элемент</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Новый элемент</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Новый элемент</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Новый элемент</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Новый элемент</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Новый элемент</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="second_nameEdit"/>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="lineEdit_10"/>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLineEdit" name="lineEdit_11"/>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="lineEdit_9"/>
+           </item>
+           <item row="4" column="4">
+            <widget class="QPushButton" name="searchButton">
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(173, 127, 168);</string>
+             </property>
+             <property name="text">
+              <string>Искать</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="3">
+            <spacer name="horizontalSpacer_15">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="lineEdit_4"/>
-        </item>
-        <item row="2" column="1">
-         <widget class="QLineEdit" name="lineEdit_9"/>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label_14">
-          <property name="text">
-           <string>Отчество (при наличии):</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_13">
-          <property name="text">
-           <string>Имя:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QLineEdit" name="lineEdit_10"/>
-        </item>
-        <item row="1" column="2">
-         <spacer name="horizontalSpacer_4">
+         <spacer name="horizontalSpacer_5">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -632,7 +713,7 @@
      <x>0</x>
      <y>0</y>
      <width>740</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
