@@ -1,11 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QTableWidget>
-#include <QString>
-#include <iostream>
-#include <QDate>
-#include <cmath>
-#include <QMessageBox>
 
 using namespace std;
 MainWindow::MainWindow(QWidget *parent)
@@ -16,29 +10,53 @@ MainWindow::MainWindow(QWidget *parent)
     ui -> creditTable -> horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui -> hypothecTable -> horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui -> depositTable -> horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->stackedWidget -> setCurrentIndex(0);
-}
+    ui -> stackedWidget -> setCurrentIndex(0);
+//    db = QSqlDatabase::addDatabase("QMYSQL");
+//    db.setHostName("127.0.0.1");
+//    db.setDatabaseName("Расчеты");
+//    db.setUserName("root");
+//    db.setPassword("Qwer1234!");
+//    if(!db.open())
+//    {
+//        qDebug() << db.lastError().text();
+//    }
+//    else
+//    {
+//        qDebug() << "Success!";
+//    }
+//    query = QSqlQuery(db);
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("./Database.db");
+    if(!db.open())
+    {
+        qDebug() << db.lastError().text();
+    }
+    else
+    {
+        qDebug() << "Success!";
+    }
+    query = QSqlQuery(db);
 
+}
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
 
 void MainWindow::on_databaseButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
 }
 
-
 void MainWindow::on_calculatorButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
 }
 
+
 void MainWindow::on_creditCountButton_clicked()
 {
-    ui -> creditTable -> setRowCount(1);
-    ui -> depositTable -> setRowCount(1);
     long int CreditSumValue;
     QString CreditDateValue;
     double CreditPercentValue;
@@ -46,10 +64,11 @@ void MainWindow::on_creditCountButton_clicked()
     double creditannuitypaymentmonth;
     int creditcleanpaymentmonth;
     int creditoverpayment = 0;
-    int y = 0;
     double creditpercentvaluemonth;
     double creditpercentpaymentvalue;
     QString creditannuitypaymentmonthstring, creditpercentpaymentvaluestring, creditoverpaymentstring, creditcleanpaymentmonthstring, creditgeneralpaymentstring;
+    y = 0;
+    ui -> creditTable -> setRowCount(1);
 
 
     QDate CreditDatesrc = ui -> creditDate -> date();
@@ -132,20 +151,19 @@ void MainWindow::on_creditCountButton_clicked()
     ui -> creditTable -> removeRow(y);
 }
 
-
 void MainWindow::on_hypothecCountButton_clicked()
 {
-    ui -> hypothecTable -> setRowCount(1);
-    int hypothecSumValue;
+    long int hypothecSumValue;
     int hypothecfirstpaymentValue;
     QString hypothecDateValue;
     double hypothecPercentValue;
     double hypothecTimeValue;
     double hypothecannuitypaymentmonth, hypotheccleanpaymentmonth, hypothecoverpayment = 0;
-    int y = 0;
     double hypothecpercentvaluemonth;
     double hypothecpercentpaymentvalue;
     QString hypothecannuitypaymentmonthstring, hypothecpercentpaymentvaluestring, hypothecoverpaymentstring, hypotheccleanpaymentmonthstring;
+    y = 0;
+    ui -> hypothecTable -> setRowCount(1);
 
     QString hypothecFirstPayment = ui -> hypothecFirstPayment -> text();
     hypothecfirstpaymentValue = hypothecFirstPayment.toInt();
@@ -157,6 +175,7 @@ void MainWindow::on_hypothecCountButton_clicked()
 
     QString hypothecSumsrc = ui -> hypothecSum -> text();
     hypothecSumValue = hypothecSumsrc.toInt();
+
     if (hypothecfirstpaymentValue < hypothecSumValue * 0.15 or hypothecfirstpaymentValue > hypothecSumValue * 0.6)
     {
         QMessageBox::about(this, "Ошибка", "Неправильное значение первоначального взноса");
@@ -230,4 +249,80 @@ void MainWindow::on_hypothecCountButton_clicked()
     ui -> hypothecTable -> removeRow(y);
 }}
 
+
+
+
+//void MainWindow::on_searchButton_clicked()
+//{
+//    if(db.open())
+//    {
+//        userfirstname = ui -> firstname -> text();
+//        userlastname = ui -> lastname -> text();
+//        QSqlQuery qry;
+//        qry.prepare()
+//    }
+//}
+
+
+//void MainWindow::on_creditSaveButton_clicked()
+//{
+//    if(db.open())
+//    {
+//        query.exec("CREATE TABLE :name(id INT PRIMARY KEY, date INT, monthpayment INT, percent INT, cleanpayment INT, overpayment INT, rest INT)");
+
+//    }
+//}
+
+
+void MainWindow::on_depositCountButton_clicked()
+{
+    ui -> depositTable -> setRowCount(1);
+
+    long int depositSumValue;
+    int depositTimeValue;
+    y = 0;
+    double depositPercentValue, depositpercentpaymentValue, depositpercentpaymentsumValue = 0;
+    QString depositpercentpaymentsumsrc;
+    QString depositDateValue;
+    QDate depositDatesrc;
+    QString depositSumsrc, depositTimesrc, depositPercentsrc;
+    depositSumsrc = ui -> depositSum -> text();
+    depositSumValue = depositSumsrc.toInt();
+
+    depositTimesrc = ui -> depositTime -> text();
+    depositTimeValue = depositTimesrc.toInt();
+
+    depositPercentsrc = ui -> depositPercent -> text();
+    depositPercentValue = depositPercentsrc.toDouble();
+
+    depositpercentpaymentValue = depositSumValue * pow((1.0 + ((depositPercentValue / 100.0) / 12.0)), depositTimeValue);
+    depositpercentpaymentValue -= depositSumValue;
+
+    depositDatesrc = ui -> depositDate -> date();
+
+    while (y <= depositTimeValue)
+    {
+        depositSumValue += depositpercentpaymentValue;
+        depositSumsrc = QString::number(depositSumValue);
+        QTableWidgetItem *depositpercentgotValueitem = new QTableWidgetItem;
+        depositpercentpaymentsumValue +=depositpercentpaymentValue;
+        depositpercentpaymentsumsrc = QString::number(depositpercentpaymentsumValue);
+        depositpercentgotValueitem -> setText(depositpercentpaymentsumsrc);
+
+        QTableWidgetItem *depositdatevalueitem = new QTableWidgetItem;
+        depositDatesrc = depositDatesrc.addMonths(1);
+        depositDateValue = depositDatesrc.toString("d.M.yyyy");
+        depositdatevalueitem -> setText(depositDateValue);
+
+        QTableWidgetItem *depositSumValueitem = new QTableWidgetItem;
+        depositSumValueitem -> setText(depositSumsrc);
+
+        ui -> depositTable -> setItem(y, 0, depositdatevalueitem);
+        ui -> depositTable -> setItem(y, 1, depositpercentgotValueitem);
+        ui -> depositTable -> setItem(y, 2, depositSumValueitem);
+        y++;
+        ui -> depositTable -> insertRow(y);
+    }
+    ui -> depositTable -> removeRow(y);
+}
 

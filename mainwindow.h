@@ -2,6 +2,19 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTableWidget>
+#include <QString>
+#include <QStringList>
+#include <iostream>
+#include <QDate>
+#include <cmath>
+#include <QMessageBox>
+#include <QtSql>
+#include <QSqlQuery>
+#include <QDebug>
+#include <QSqlTableModel>
+#include <QSqlError>
+#include <QSqlRecord>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,7 +36,20 @@ private slots:
 
     void on_hypothecCountButton_clicked();
 
+//    void on_searchButton_clicked();
+
+//    void on_creditSaveButton_clicked();
+
+    void on_depositCountButton_clicked();
+
 private:
+    int y = 0;
+
+    QSqlDatabase db;
+    QSqlQuery query;
+    QSqlTableModel *model;
+    QString userfirstname, userlastname;
+
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H
